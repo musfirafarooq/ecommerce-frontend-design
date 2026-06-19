@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | NovaNode</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+
+    .about-hero {
+      background: linear-gradient(135deg, #0A5940, #0D6E4E);
+      color: white;
+      padding: 90px 0;
+      text-align: center;
+    }
+    .about-hero h1 { font-size: 52px; font-weight: 900; margin-bottom: 16px; letter-spacing: -1px; }
+    .about-hero p { font-size: 18px; opacity: .80; max-width: 600px; margin: 0 auto; line-height: 1.7; }
+
+    .about-section {
+      width: 90%; max-width: 1200px;
+      margin: 80px auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      align-items: center;
+    }
+    .about-section.reverse { direction: rtl; }
+    .about-section.reverse > * { direction: ltr; }
+
+    .about-img {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(13,110,78,.18);
+    }
+    .about-img img { width: 100%; height: 380px; object-fit: cover; display: block; }
+
+    .about-text .eyebrow {
+      display: inline-block;
+      background: rgba(201,168,76,.15);
+      color: #A8893A;
+      font-size: 12px; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      padding: 6px 16px; border-radius: 30px;
+      margin-bottom: 18px;
+      border: 1px solid rgba(201,168,76,.3);
+    }
+    .about-text h2 { font-size: 36px; font-weight: 800; color: #1A2420; margin-bottom: 18px; line-height: 1.2; letter-spacing: -.5px; }
+    .about-text h2 span { color: #0D6E4E; }
+    .about-text p { color: #6B7A74; font-size: 16px; line-height: 1.8; margin-bottom: 16px; }
+
+    .about-list { margin-top: 8px; }
+    .about-list li {
+      display: flex; align-items: flex-start; gap: 12px;
+      margin-bottom: 14px; color: #1A2420; font-size: 15px;
+    }
+    .about-list li i { color: #0D6E4E; font-size: 16px; margin-top: 2px; flex-shrink: 0; }
+
+    /* Stats bar */
+    .stats-bar {
+      background: #0D6E4E;
+      padding: 60px 0;
+    }
+    .stats-bar .inner {
+      width: 90%; max-width: 1100px; margin: auto;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 20px; text-align: center;
+    }
+    .stats-bar .stat strong { display: block; font-size: 40px; font-weight: 900; color: #C9A84C; }
+    .stats-bar .stat span { font-size: 14px; color: rgba(255,255,255,.75); margin-top: 6px; display: block; }
+
+    /* Team */
+    .team-section { width: 90%; max-width: 1100px; margin: 90px auto; }
+    .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 50px; }
+    .team-card {
+      background: white; border-radius: 20px;
+      padding: 36px 28px; text-align: center;
+      box-shadow: 0 5px 20px rgba(13,110,78,.08);
+      border: 1px solid #D8E5E0;
+      transition: .3s;
+    }
+    .team-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(13,110,78,.14); }
+    .team-avatar {
+      width: 90px; height: 90px;
+      background: linear-gradient(135deg, #0D6E4E, #C9A84C);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 32px; color: white; font-weight: 800;
+    }
+    .team-card h3 { font-size: 18px; font-weight: 700; color: #1A2420; margin-bottom: 6px; }
+    .team-card .role { font-size: 13px; color: #0D6E4E; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px; }
+    .team-card p { font-size: 14px; color: #6B7A74; line-height: 1.6; }
+
+    /* Values */
+    .values-section {
+      background: #F5F9F7;
+      padding: 90px 0;
+    }
+    .values-inner { width: 90%; max-width: 1100px; margin: auto; }
+    .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 50px; }
+    .value-card {
+      background: white; border-radius: 16px;
+      padding: 32px 24px;
+      box-shadow: 0 4px 12px rgba(13,110,78,.06);
+      border-left: 4px solid #0D6E4E;
+    }
+    .value-card i { font-size: 28px; color: #0D6E4E; margin-bottom: 16px; }
+    .value-card h3 { font-size: 17px; font-weight: 700; color: #1A2420; margin-bottom: 10px; }
+    .value-card p { color: #6B7A74; font-size: 14px; line-height: 1.7; }
+
+    @media (max-width: 900px) {
+      .about-section { grid-template-columns: 1fr; gap: 40px; }
+      .about-section.reverse { direction: ltr; }
+      .stats-bar .inner { grid-template-columns: repeat(2, 1fr); }
+      .team-grid, .values-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 560px) {
+      .about-hero h1 { font-size: 34px; }
+      .team-grid, .values-grid { grid-template-columns: 1fr; }
+      .stats-bar .inner { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="top-nav">
+    <a href="index.html" class="logo">
+      <div class="logo-icon"><i class="fa-solid fa-bolt"></i></div>
+      <h2>Nova<span>Node</span></h2>
+    </a>
+    <div class="search-box">
+      <input type="text" placeholder="Search for laptops, phones, headphones...">
+      <button><i class="fa-solid fa-magnifying-glass"></i></button>
+    </div>
+    <div class="header-icons">
+      <a href="index.html" class="nav-icon"><i class="fa-solid fa-house"></i><span>Home</span></a>
+      <a href="products.html" class="nav-icon"><i class="fa-solid fa-store"></i><span>Shop</span></a>
+      <a href="#" class="nav-icon"><i class="fa-regular fa-heart"></i><span>Wishlist</span></a>
+      <a href="cart.html" class="nav-icon" style="position:relative">
+        <i class="fa-solid fa-cart-shopping"></i><span>Cart</span>
+        <b class="cart-badge" id="cart-count" style="display:none">0</b>
+      </a>
+    </div>
+  </div>
+  <nav class="main-nav">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="products.html">All Products</a></li>
+      <li><a href="products.html?cat=Electronics">Electronics</a></li>
+      <li><a href="products.html?cat=Gaming">Gaming</a></li>
+      <li><a href="products.html?cat=Furniture">Furniture</a></li>
+      <li><a href="products.html?cat=Photography">Photography</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="about-hero">
+  <h1>We Are <span style="color:#C9A84C">NovaNode</span></h1>
+  <p>Built by tech enthusiasts, for tech enthusiasts. We believe everyone deserves access to premium technology without compromise.</p>
+</section>
+
+<!-- OUR STORY -->
+<section class="about-section">
+  <div class="about-img">
+    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=700&h=400&fit=crop" alt="Our Story">
+  </div>
+  <div class="about-text">
+    <div class="eyebrow">Our Story</div>
+    <h2>Started with a <span>Simple Idea</span></h2>
+    <p>NovaNode was created with one goal: make premium tech accessible. Designed and built entirely by Musfira, it started as a passion project to eliminate the trade-off between quality and price.</p>
+    <p>From a solo vision to a growing platform, this project is driven by a commitment to great design and a community that believes technology should be for everyone.</p>
+    <ul class="about-list">
+      <li><i class="fa-solid fa-check-circle"></i> Built and designed by Musfira, solo</li>
+      <li><i class="fa-solid fa-check-circle"></i> Now shipping to 40+ countries worldwide</li>
+      <li><i class="fa-solid fa-check-circle"></i> Over 50,000 products curated and tested</li>
+      <li><i class="fa-solid fa-check-circle"></i> 4.9★ average customer satisfaction rating</li>
+    </ul>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats-bar">
+  <div class="inner">
+    <div class="stat"><strong>200K+</strong><span>Happy Customers</span></div>
+    <div class="stat"><strong>50K+</strong><span>Products Listed</span></div>
+    <div class="stat"><strong>40+</strong><span>Countries Served</span></div>
+    <div class="stat"><strong>4.9★</strong><span>Average Rating</span></div>
+  </div>
+</section>
+
+<!-- MISSION -->
+<section class="about-section reverse" style="margin-top:90px">
+  <div class="about-img">
+    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=700&h=400&fit=crop" alt="Our Mission">
+  </div>
+  <div class="about-text">
+    <div class="eyebrow">Our Mission</div>
+    <h2>Tech for <span>Everyone</span>, Everywhere</h2>
+    <p>We are on a mission to democratize access to cutting-edge technology. Every product is carefully selected to meet high standards of quality — at prices that make sense.</p>
+    <p>Every product in this catalog is hand-picked and curated with care. Nothing gets listed that isn't worth your money.</p>
+    <ul class="about-list">
+      <li><i class="fa-solid fa-leaf"></i> Committed to sustainable packaging by 2026</li>
+      <li><i class="fa-solid fa-shield-halved"></i> 2-year warranty on all products</li>
+      <li><i class="fa-solid fa-truck-fast"></i> Free shipping on orders over $50</li>
+    </ul>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="values-section">
+  <div class="values-inner">
+    <div class="section-header">
+      <div class="section-eyebrow">What We Stand For</div>
+      <h2>Our Core <span>Values</span></h2>
+      <p>These principles guide every decision we make — from product selection to customer support.</p>
+    </div>
+    <div class="values-grid">
+      <div class="value-card">
+        <i class="fa-solid fa-star"></i>
+        <h3>Quality First</h3>
+        <p>Every product is vetted before listing. If it doesn't meet our standards, it doesn't reach our shelves — period.</p>
+      </div>
+      <div class="value-card">
+        <i class="fa-solid fa-handshake"></i>
+        <h3>Customer Trust</h3>
+        <p>Honest pricing, no hidden fees, and real human support available 7 days a week. Your trust is our most valuable asset.</p>
+      </div>
+      <div class="value-card">
+        <i class="fa-solid fa-rocket"></i>
+        <h3>Innovation</h3>
+        <p>We stay ahead of the curve so you don't have to. NovaNode is always looking for the next breakthrough in consumer tech.</p>
+      </div>
+      <div class="value-card">
+        <i class="fa-solid fa-leaf"></i>
+        <h3>Sustainability</h3>
+        <p>Eco-conscious packaging and partnerships with brands that share our commitment to the planet's future.</p>
+      </div>
+      <div class="value-card">
+        <i class="fa-solid fa-bolt"></i>
+        <h3>Speed & Reliability</h3>
+        <p>Orders processed within 24 hours. Real-time tracking. If something goes wrong, we make it right — fast.</p>
+      </div>
+      <div class="value-card">
+        <i class="fa-solid fa-users"></i>
+        <h3>Community</h3>
+        <p>NovaNode is more than a store. It's a community of tech lovers who help each other discover and get the most out of their gear.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-box">
+      <div class="footer-logo">
+        <div class="logo-icon"><i class="fa-solid fa-bolt"></i></div>
+        <h2>Nova<span>Node</span></h2>
+      </div>
+      <p>Premium tech, unbeatable prices. Serving 200,000+ happy customers worldwide since 2019.</p>
+      <div class="social-icons">
+        <a href="#" class="social-icon"><i class="fa-brands fa-twitter"></i></a>
+        <a href="#" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" class="social-icon"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#" class="social-icon"><i class="fa-brands fa-youtube"></i></a>
+      </div>
+    </div>
+    <div class="footer-box">
+      <h4>Quick Links</h4>
+      <a href="index.html">Home</a>
+      <a href="products.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-box">
+      <h4>Support</h4>
+      <a href="#">FAQ</a>
+      <a href="#">Shipping Policy</a>
+      <a href="#">Returns</a>
+      <a href="#">Track Order</a>
+    </div>
+    <div class="footer-box">
+      <h4>Contact</h4>
+      <a href="mailto:hello@novanode.com"><i class="fa-solid fa-envelope"></i> hello@novanode.com</a>
+      <a href="tel:+15550001234"><i class="fa-solid fa-phone"></i> +1 555 000 1234</a>
+      <a href="#"><i class="fa-solid fa-location-dot"></i> Rawalpindi, Pakistan</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 NovaNode. All rights reserved.</p>
+    <div class="footer-bottom-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

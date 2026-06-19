@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products | NovaNode</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/products.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>body { font-family: 'Inter', sans-serif; }</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="top-nav">
+    <a href="index.html" class="logo">
+      <div class="logo-icon"><i class="fa-solid fa-bolt"></i></div>
+      <h2>Nova<span>Node</span></h2>
+    </a>
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search products...">
+      <button onclick="applyFilters()"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </div>
+    <div class="header-icons">
+      <a href="index.html" class="nav-icon"><i class="fa-solid fa-house"></i><span>Home</span></a>
+      <a href="products.html" class="nav-icon active"><i class="fa-solid fa-store"></i><span>Shop</span></a>
+      <a href="#" class="nav-icon"><i class="fa-regular fa-heart"></i><span>Wishlist</span></a>
+      <a href="cart.html" class="nav-icon" style="position:relative">
+        <i class="fa-solid fa-cart-shopping"></i><span>Cart</span>
+        <b class="cart-badge" id="cart-count" style="display:none">0</b>
+      </a>
+    </div>
+  </div>
+  <nav class="main-nav">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="products.html" class="active">All Products</a></li>
+      <li><a href="products.html?cat=Electronics">Electronics</a></li>
+      <li><a href="products.html?cat=Gaming">Gaming</a></li>
+      <li><a href="products.html?cat=Furniture">Furniture</a></li>
+      <li><a href="products.html?cat=Photography">Photography</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- PAGE TITLE -->
+<section class="page-banner">
+  <h1>Our Products</h1>
+  <p>Browse our premium collection of tech & gadgets</p>
+  <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>Products</span></div>
+</section>
+
+<!-- SHOP LAYOUT -->
+<section class="shop">
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <h2>Filters</h2>
+
+    <h3>Category</h3>
+    <ul id="categoryList">
+      <li data-category="All" class="active-filter">All</li>
+      <li data-category="Electronics">Electronics</li>
+      <li data-category="Gaming">Gaming</li>
+      <li data-category="Furniture">Furniture</li>
+      <li data-category="Photography">Photography</li>
+    </ul>
+
+    <h3>Max Price</h3>
+    <input type="range" id="priceRange" min="0" max="1000" value="1000" style="width:100%;accent-color:#0D6E4E;margin-bottom:8px">
+    <p style="font-size:14px;color:#6B7A74">Up to: <strong style="color:#0D6E4E">$<span id="priceValue">1000</span></strong></p>
+
+    <h3 style="margin-top:24px">Sort By</h3>
+    <select id="sortSelect" style="width:100%;padding:10px 12px;border:2px solid #D8E5E0;border-radius:10px;font-size:14px;color:#1A2420;outline:none;font-family:'Inter',sans-serif;cursor:pointer;background:#F5F9F7">
+      <option value="default">Default</option>
+      <option value="price-asc">Price: Low to High</option>
+      <option value="price-desc">Price: High to Low</option>
+      <option value="rating">Top Rated</option>
+    </select>
+  </div>
+
+  <!-- PRODUCTS AREA -->
+  <div class="products-area">
+    <div id="results-bar" style="margin-bottom:20px;font-size:14px;color:#6B7A74"></div>
+    <div class="product-grid" id="productGrid"></div>
+    <div class="pagination" id="pagination"></div>
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-box">
+      <div class="footer-logo">
+        <div class="logo-icon"><i class="fa-solid fa-bolt"></i></div>
+        <h2>Nova<span>Node</span></h2>
+      </div>
+      <p>Premium tech, unbeatable prices. Serving customers worldwide.</p>
+      <div class="social-icons">
+        <a href="#" class="social-icon"><i class="fa-brands fa-twitter"></i></a>
+        <a href="#" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" class="social-icon"><i class="fa-brands fa-facebook"></i></a>
+      </div>
+    </div>
+    <div class="footer-box">
+      <h4>Quick Links</h4>
+      <a href="index.html">Home</a>
+      <a href="products.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-box">
+      <h4>Support</h4>
+      <a href="#">FAQ</a>
+      <a href="#">Shipping Policy</a>
+      <a href="#">Returns</a>
+    </div>
+    <div class="footer-box">
+      <h4>Contact</h4>
+      <a href="mailto:hello@novanode.com"><i class="fa-solid fa-envelope"></i> hello@novanode.com</a>
+      <a href="#"><i class="fa-solid fa-location-dot"></i> Rawalpindi, Pakistan</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 NovaNode. All rights reserved.</p>
+    <div class="footer-bottom-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+<script src="js/products.js"></script>
+</body>
+</html>

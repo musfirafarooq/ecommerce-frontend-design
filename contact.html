@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | NovaNode</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+
+    .contact-hero {
+      background: linear-gradient(135deg, #0A5940, #0D6E4E);
+      color: white; padding: 80px 0; text-align: center;
+    }
+    .contact-hero h1 { font-size: 50px; font-weight: 900; margin-bottom: 14px; letter-spacing: -1px; }
+    .contact-hero p { font-size: 17px; opacity: .80; max-width: 540px; margin: 0 auto; }
+
+    .contact-wrapper {
+      width: 90%; max-width: 1200px;
+      margin: 80px auto;
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    /* Info cards */
+    .contact-info { display: flex; flex-direction: column; gap: 20px; }
+    .info-card {
+      background: white; border-radius: 16px;
+      padding: 28px 24px;
+      box-shadow: 0 4px 16px rgba(13,110,78,.08);
+      border: 1px solid #D8E5E0;
+      display: flex; gap: 18px; align-items: flex-start;
+      transition: .3s;
+    }
+    .info-card:hover { transform: translateX(6px); border-color: #0D6E4E; }
+    .info-icon {
+      width: 52px; height: 52px; flex-shrink: 0;
+      background: linear-gradient(135deg, rgba(13,110,78,.12), rgba(201,168,76,.12));
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; color: #0D6E4E;
+    }
+    .info-card h3 { font-size: 15px; font-weight: 700; color: #1A2420; margin-bottom: 6px; }
+    .info-card p, .info-card a { font-size: 14px; color: #6B7A74; text-decoration: none; line-height: 1.6; }
+    .info-card a:hover { color: #0D6E4E; }
+
+    .contact-hours {
+      background: linear-gradient(135deg, #0D6E4E, #17936A);
+      border-radius: 16px; padding: 28px 24px; color: white;
+    }
+    .contact-hours h3 { font-size: 16px; font-weight: 700; margin-bottom: 14px; }
+    .contact-hours p { font-size: 14px; opacity: .85; margin-bottom: 8px; display: flex; justify-content: space-between; }
+    .contact-hours p span { font-weight: 600; color: #C9A84C; }
+
+    /* Form */
+    .contact-form-wrap {
+      background: white; border-radius: 20px;
+      padding: 48px 42px;
+      box-shadow: 0 8px 32px rgba(13,110,78,.10);
+      border: 1px solid #D8E5E0;
+    }
+    .contact-form-wrap h2 { font-size: 28px; font-weight: 800; color: #1A2420; margin-bottom: 8px; }
+    .contact-form-wrap p { font-size: 14px; color: #6B7A74; margin-bottom: 32px; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .form-group { margin-bottom: 22px; }
+    .form-group label {
+      display: block; font-size: 13px; font-weight: 600;
+      color: #1A2420; margin-bottom: 8px; letter-spacing: .3px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%; padding: 13px 16px;
+      border: 2px solid #D8E5E0; border-radius: 10px;
+      font-size: 14px; color: #1A2420;
+      font-family: 'Inter', sans-serif;
+      outline: none; transition: .3s;
+      background: #F5F9F7;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: #0D6E4E;
+      background: white;
+      box-shadow: 0 0 0 3px rgba(13,110,78,.12);
+    }
+    .form-group textarea { resize: vertical; min-height: 130px; }
+    .form-group select { cursor: pointer; }
+
+    .submit-btn {
+      width: 100%; padding: 16px;
+      background: #0D6E4E; color: white;
+      border: none; border-radius: 12px;
+      font-size: 16px; font-weight: 700;
+      cursor: pointer; transition: .3s;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      font-family: 'Inter', sans-serif;
+    }
+    .submit-btn:hover { background: #0A5940; transform: translateY(-2px); box-shadow: 0 10px 28px rgba(13,110,78,.22); }
+
+    .form-success {
+      display: none;
+      text-align: center; padding: 32px;
+    }
+    .form-success i { font-size: 52px; color: #0D6E4E; margin-bottom: 16px; display: block; }
+    .form-success h3 { font-size: 22px; font-weight: 800; color: #1A2420; margin-bottom: 10px; }
+    .form-success p { color: #6B7A74; font-size: 15px; }
+
+    /* Map placeholder */
+    .map-section { width: 90%; max-width: 1200px; margin: 0 auto 90px; }
+    .map-section h2 { font-size: 28px; font-weight: 800; color: #1A2420; margin-bottom: 24px; }
+    .map-placeholder {
+      width: 100%; height: 300px;
+      background: linear-gradient(135deg, #F5F9F7, #e8f3ee);
+      border-radius: 20px;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 14px;
+      border: 2px dashed #D8E5E0;
+      color: #6B7A74;
+    }
+    .map-placeholder i { font-size: 48px; color: #0D6E4E; }
+    .map-placeholder p { font-size: 15px; font-weight: 500; }
+    .map-placeholder small { font-size: 13px; }
+
+    /* FAQ */
+    .faq-section { background: #F5F9F7; padding: 80px 0; }
+    .faq-inner { width: 90%; max-width: 800px; margin: auto; }
+    .faq-inner .section-header { margin-bottom: 44px; }
+    .faq-item {
+      background: white; border-radius: 12px;
+      margin-bottom: 12px;
+      border: 1px solid #D8E5E0;
+      overflow: hidden;
+    }
+    .faq-question {
+      width: 100%; padding: 20px 24px;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 15px; font-weight: 600; color: #1A2420;
+      background: none; border: none; cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      text-align: left;
+      transition: .2s;
+    }
+    .faq-question:hover { color: #0D6E4E; }
+    .faq-question i { font-size: 13px; color: #0D6E4E; transition: .3s; flex-shrink: 0; }
+    .faq-question.open i { transform: rotate(180deg); }
+    .faq-answer {
+      max-height: 0; overflow: hidden;
+      transition: max-height .35s ease, padding .35s ease;
+      font-size: 14px; color: #6B7A74; line-height: 1.7;
+      padding: 0 24px;
+    }
+    .faq-answer.open { max-height: 200px; padding: 0 24px 20px; }
+
+    @media (max-width: 900px) {
+      .contact-wrapper { grid-template-columns: 1fr; gap: 40px; }
+      .contact-form-wrap { padding: 32px 24px; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px) {
+      .contact-hero h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="top-nav">
+    <a href="index.html" class="logo">
+      <div class="logo-icon"><i class="fa-solid fa-bolt"></i></div>
+      <h2>Nova<span>Node</span></h2>
+    </a>
+    <div class="search-box">
+      <input type="text" placeholder="Search for laptops, phones, headphones...">
+      <button><i class="fa-solid fa-magnifying-glass"></i></button>
+    </div>
+    <div class="header-icons">
+      <a href="index.html" class="nav-icon"><i class="fa-solid fa-house"></i><span>Home</span></a>
+      <a href="products.html" class="nav-icon"><i class="fa-solid fa-store"></i><span>Shop</span></a>
+      <a href="#" class="nav-icon"><i class="fa-regular fa-heart"></i><span>Wishlist</span></a>
+      <a href="cart.html" class="nav-icon" style="position:relative">
+        <i class="fa-solid fa-cart-shopping"></i><span>Cart</span>
+        <b class="cart-badge" id="cart-count" style="display:none">0</b>
+      </a>
+    </div>
+  </div>
+  <nav class="main-nav">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="products.html">All Products</a></li>
+      <li><a href="products.html?cat=Electronics">Electronics</a></li>
+      <li><a href="products.html?cat=Gaming">Gaming</a></li>
+      <li><a href="products.html?cat=Furniture">Furniture</a></li>
+      <li><a href="products.html?cat=Photography">Photography</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="contact-hero">
+  <h1>Get in <span style="color:#C9A84C">Touch</span></h1>
+  <p>Have a question, concern, or just want to say hi? We'd love to hear from you. Our team responds within 24 hours.</p>
+</section>
+
+<!-- CONTACT MAIN -->
+<div class="contact-wrapper">
+
+  <!-- INFO SIDE -->
+  <div class="contact-info">
+    <div class="info-card">
+      <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
+      <div>
+        <h3>Email Us</h3>
+        <a href="mailto:hello@novanode.com">hello@novanode.com</a><br>
+        <a href="mailto:support@novanode.com">support@novanode.com</a>
+        <p style="margin-top:6px">We reply within 24 hours.</p>
+      </div>
+    </div>
+    <div class="info-card">
+      <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
+      <div>
+        <h3>Call Us</h3>
+        <a href="tel:+15550001234">+1 555 000 1234</a>
+        <p style="margin-top:6px">Mon–Fri, 9am–6pm PST</p>
+      </div>
+    </div>
+    <div class="info-card">
+      <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+      <div>
+        <h3>Visit Us</h3>
+        <p>Office 12, Satellite Town<br>Rawalpindi, Punjab, Pakistan</p>
+      </div>
+    </div>
+    <div class="info-card">
+      <div class="info-icon"><i class="fa-brands fa-whatsapp"></i></div>
+      <div>
+        <h3>WhatsApp Support</h3>
+        <a href="https://wa.me/15550001234">+1 555 000 1234</a>
+        <p style="margin-top:6px">Quick help via chat, 7 days a week.</p>
+      </div>
+    </div>
+    <div class="contact-hours">
+      <h3><i class="fa-regular fa-clock"></i> &nbsp;Business Hours</h3>
+      <p>Monday – Friday <span>9:00 AM – 6:00 PM</span></p>
+      <p>Saturday <span>10:00 AM – 4:00 PM</span></p>
+      <p>Sunday <span>Closed</span></p>
+    </div>
+  </div>
+
+  <!-- FORM SIDE -->
+  <div class="contact-form-wrap">
+    <div id="form-area">
+      <h2>Send Us a Message</h2>
+      <p>Fill out the form below and one of our team members will get back to you shortly.</p>
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name *</label>
+          <input type="text" id="fname" placeholder="John">
+        </div>
+        <div class="form-group">
+          <label>Last Name *</label>
+          <input type="text" id="lname" placeholder="Doe">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Email Address *</label>
+          <input type="email" id="email" placeholder="john@example.com">
+        </div>
+        <div class="form-group">
+          <label>Phone (optional)</label>
+          <input type="tel" id="phone" placeholder="+1 555 000 000">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Subject *</label>
+        <select id="subject">
+          <option value="">Select a subject...</option>
+          <option>Order Issue</option>
+          <option>Return / Refund</option>
+          <option>Product Question</option>
+          <option>Shipping & Delivery</option>
+          <option>Partnership</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Message *</label>
+        <textarea id="message" placeholder="Describe your issue or question in detail..."></textarea>
+      </div>
+      <button class="submit-btn" onclick="submitForm()">
+        <i class="fa-solid fa-paper-plane"></i> Send Message
+      </button>
+    </div>
+    <div class="form-success" id="form-success">
+      <i class="fa-solid fa-circle-check"></i>
+      <h3>Message Sent!</h3>
+      <p>Thanks for reaching out. Our team will get back to you within 24 hours.</p>
+    </div>
+  </div>
+</div>
+
+<!-- MAP -->
+<div class="map-section">
+  <h2>Find Us</h2>
+  <div class="map-placeholder">
+    <i class="fa-solid fa-map-location-dot"></i>
+    <p>Office 12, Satellite Town — Rawalpindi, Pakistan</p>
+    <small>Open in Google Maps for directions</small>
+  </div>
+</div>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="faq-inner">
+    <div class="section-header">
+      <div class="section-eyebrow">Common Questions</div>
+      <h2>Frequently Asked <span>Questions</span></h2>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        How long does shipping take? <i class="fa-solid fa-chevron-down"></i>
+      </button>
+      <div class="faq-answer">Standard shipping takes 3–7 business days. Express shipping (1–2 days) is available at checkout. Free shipping is included on all orders over $50.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        What is your return policy? <i class="fa-solid fa-chevron-down"></i>
+      </button>
+      <div class="faq-answer">We offer a 30-day hassle-free return policy. Items must be in original condition. Initiate a return from your account dashboard or by contacting our support team.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Do products come with a warranty? <i class="fa-solid fa-chevron-down"></i>
+      </button>
+      <div class="faq-answer">Yes — all products sold on NovaNode come with a 2-year manufacturer warranty. We also offer extended warranty plans for select items.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        How do I track my order? <i class="fa-solid fa-chevron-down"></i>
+      </button>
+      <div class="faq-answer">Once your order ships, you'll receive a tracking number via email. You can also view order status in your account under "My Orders".</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Do you ship internationally? <i class="fa-solid fa-chevron-down"></i>
+      </button>
+      <div class="faq-answer">Yes! We ship to 40+ countries. International shipping rates and delivery estimates are calculated at checkout based on your location.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-box">
+      <div class="footer-logo">
+        <div class="logo-icon"><i class="fa-solid fa-bolt"></i></div>
+        <h2>Nova<span>Node</span></h2>
+      </div>
+      <p>Premium tech, unbeatable prices. Serving 200,000+ happy customers worldwide since 2019.</p>
+      <div class="social-icons">
+        <a href="#" class="social-icon"><i class="fa-brands fa-twitter"></i></a>
+        <a href="#" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" class="social-icon"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#" class="social-icon"><i class="fa-brands fa-youtube"></i></a>
+      </div>
+    </div>
+    <div class="footer-box">
+      <h4>Quick Links</h4>
+      <a href="index.html">Home</a>
+      <a href="products.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-box">
+      <h4>Support</h4>
+      <a href="#">FAQ</a>
+      <a href="#">Shipping Policy</a>
+      <a href="#">Returns</a>
+      <a href="#">Track Order</a>
+    </div>
+    <div class="footer-box">
+      <h4>Contact</h4>
+      <a href="mailto:hello@novanode.com"><i class="fa-solid fa-envelope"></i> hello@novanode.com</a>
+      <a href="tel:+15550001234"><i class="fa-solid fa-phone"></i> +1 555 000 1234</a>
+      <a href="#"><i class="fa-solid fa-location-dot"></i> Rawalpindi, Pakistan</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 NovaNode. All rights reserved.</p>
+    <div class="footer-bottom-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+<script>
+function submitForm() {
+  const fname = document.getElementById('fname').value.trim();
+  const lname = document.getElementById('lname').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const subject = document.getElementById('subject').value;
+  const message = document.getElementById('message').value.trim();
+  if (!fname || !lname || !email || !subject || !message) {
+    alert('Please fill in all required fields.');
+    return;
+  }
+  document.getElementById('form-area').style.display = 'none';
+  document.getElementById('form-success').style.display = 'block';
+}
+
+function toggleFaq(btn) {
+  const answer = btn.nextElementSibling;
+  const isOpen = answer.classList.contains('open');
+  document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
+  document.querySelectorAll('.faq-question').forEach(b => b.classList.remove('open'));
+  if (!isOpen) {
+    answer.classList.add('open');
+    btn.classList.add('open');
+  }
+}
+</script>
+</body>
+</html>

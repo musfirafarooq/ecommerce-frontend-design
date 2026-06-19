@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart | NovaNode</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/cart.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+
+    .cart-container { width:90%; max-width:1000px; margin:60px auto; }
+    .cart-container h1 { margin-bottom:8px; font-size:36px; font-weight:900; color:#1A2420; }
+    .cart-subtitle { color:#6B7A74; font-size:15px; margin-bottom:36px; }
+
+    .cart-item {
+      display:flex; justify-content:space-between; align-items:center;
+      background:white; padding:20px 24px; margin-bottom:14px;
+      border-radius:14px; box-shadow:0 4px 16px rgba(13,110,78,.07);
+      border:1px solid #D8E5E0; gap:16px;
+    }
+    .cart-item img { width:72px; height:72px; border-radius:10px; object-fit:cover; flex-shrink:0; }
+    .cart-item-info { flex:1; }
+    .cart-item-info h3 { font-size:15px; font-weight:600; color:#1A2420; margin-bottom:4px; }
+    .cart-item-info p { font-size:14px; color:#6B7A74; }
+    .qty-controls { display:flex; align-items:center; gap:10px; }
+    .qty-controls button {
+      width:32px; height:32px; border-radius:8px;
+      background:#F5F9F7; border:1px solid #D8E5E0;
+      font-size:16px; font-weight:700; color:#0D6E4E;
+      cursor:pointer; transition:.2s; display:flex; align-items:center; justify-content:center;
+    }
+    .qty-controls button:hover { background:#0D6E4E; color:white; border-color:#0D6E4E; }
+    .qty-controls span { font-size:15px; font-weight:600; color:#1A2420; min-width:24px; text-align:center; }
+    .item-total { font-size:17px; font-weight:800; color:#0D6E4E; min-width:70px; text-align:right; }
+    .remove-btn {
+      background:none; border:none; color:#D63B3B;
+      font-size:18px; cursor:pointer; padding:6px;
+      border-radius:8px; transition:.2s;
+    }
+    .remove-btn:hover { background:#fef2f2; }
+
+    .empty-cart {
+      text-align:center; padding:80px 20px;
+      color:#6B7A74;
+    }
+    .empty-cart i { font-size:72px; color:#D8E5E0; margin-bottom:20px; display:block; }
+    .empty-cart h3 { font-size:22px; font-weight:700; color:#1A2420; margin-bottom:10px; }
+    .empty-cart a {
+      display:inline-flex; align-items:center; gap:8px; margin-top:24px;
+      background:#0D6E4E; color:white; padding:14px 32px; border-radius:12px;
+      font-size:15px; font-weight:600; transition:.3s;
+    }
+    .empty-cart a:hover { background:#0A5940; transform:translateY(-2px); }
+
+    .cart-summary-box {
+      background:white; border-radius:16px; padding:30px;
+      box-shadow:0 4px 16px rgba(13,110,78,.08); border:1px solid #D8E5E0;
+      margin-top:28px;
+    }
+    .cart-summary-box h2 { font-size:20px; font-weight:700; color:#1A2420; margin-bottom:20px; }
+    .summary-row { display:flex; justify-content:space-between; margin-bottom:12px; font-size:14px; color:#6B7A74; }
+    .summary-row.total { font-size:20px; font-weight:800; color:#1A2420; border-top:2px solid #D8E5E0; padding-top:16px; margin-top:8px; }
+    .summary-row.total span { color:#0D6E4E; }
+    .checkout-btn {
+      width:100%; margin-top:22px; padding:16px;
+      background:#0D6E4E; color:white; border:none;
+      border-radius:12px; font-size:16px; font-weight:700;
+      cursor:pointer; transition:.3s; font-family:'Inter',sans-serif;
+      display:flex; align-items:center; justify-content:center; gap:10px;
+    }
+    .checkout-btn:hover { background:#0A5940; transform:translateY(-2px); box-shadow:0 10px 28px rgba(13,110,78,.22); }
+    .clear-btn {
+      width:100%; margin-top:12px; padding:13px;
+      background:white; color:#D63B3B; border:2px solid #D63B3B;
+      border-radius:12px; font-size:14px; font-weight:600;
+      cursor:pointer; transition:.3s; font-family:'Inter',sans-serif;
+    }
+    .clear-btn:hover { background:#fef2f2; }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="top-nav">
+    <a href="index.html" class="logo">
+      <div class="logo-icon"><i class="fa-solid fa-bolt"></i></div>
+      <h2>Nova<span>Node</span></h2>
+    </a>
+    <div class="search-box">
+      <input type="text" placeholder="Search for laptops, phones, headphones...">
+      <button><i class="fa-solid fa-magnifying-glass"></i></button>
+    </div>
+    <div class="header-icons">
+      <a href="index.html" class="nav-icon"><i class="fa-solid fa-house"></i><span>Home</span></a>
+      <a href="products.html" class="nav-icon"><i class="fa-solid fa-store"></i><span>Shop</span></a>
+      <a href="#" class="nav-icon"><i class="fa-regular fa-heart"></i><span>Wishlist</span></a>
+      <a href="cart.html" class="nav-icon active" style="position:relative">
+        <i class="fa-solid fa-cart-shopping"></i><span>Cart</span>
+        <b class="cart-badge" id="cart-count" style="display:none">0</b>
+      </a>
+    </div>
+  </div>
+  <nav class="main-nav">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="products.html">All Products</a></li>
+      <li><a href="products.html?cat=Electronics">Electronics</a></li>
+      <li><a href="products.html?cat=Gaming">Gaming</a></li>
+      <li><a href="products.html?cat=Furniture">Furniture</a></li>
+      <li><a href="products.html?cat=Photography">Photography</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- CART -->
+<section class="cart-container">
+  <h1>Your Cart</h1>
+  <p class="cart-subtitle">Review your items before checking out.</p>
+
+  <div id="cart-items"></div>
+
+  <div class="cart-summary-box" id="cart-summary" style="display:none">
+    <h2>Order Summary</h2>
+    <div class="summary-row"><span>Subtotal</span><span id="subtotal-price">$0</span></div>
+    <div class="summary-row"><span>Shipping</span><span style="color:#1A9E5C">Free</span></div>
+    <div class="summary-row total"><span>Total</span><span>$<span id="total-price">0</span></span></div>
+    <button class="checkout-btn" onclick="alert('Checkout coming soon! 🛒')">
+      <i class="fa-solid fa-lock"></i> Proceed to Checkout
+    </button>
+    <button class="clear-btn" onclick="clearCart()">Clear Cart</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-box">
+      <div class="footer-logo">
+        <div class="logo-icon"><i class="fa-solid fa-bolt"></i></div>
+        <h2>Nova<span>Node</span></h2>
+      </div>
+      <p>Premium tech, unbeatable prices. Serving 200,000+ happy customers worldwide since 2019.</p>
+      <div class="social-icons">
+        <a href="#" class="social-icon"><i class="fa-brands fa-twitter"></i></a>
+        <a href="#" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" class="social-icon"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#" class="social-icon"><i class="fa-brands fa-youtube"></i></a>
+      </div>
+    </div>
+    <div class="footer-box">
+      <h4>Quick Links</h4>
+      <a href="index.html">Home</a>
+      <a href="products.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-box">
+      <h4>Support</h4>
+      <a href="#">FAQ</a>
+      <a href="#">Shipping Policy</a>
+      <a href="#">Returns</a>
+      <a href="#">Track Order</a>
+    </div>
+    <div class="footer-box">
+      <h4>Contact</h4>
+      <a href="mailto:hello@novanode.com"><i class="fa-solid fa-envelope"></i> hello@novanode.com</a>
+      <a href="tel:+15550001234"><i class="fa-solid fa-phone"></i> +1 555 000 1234</a>
+      <a href="#"><i class="fa-solid fa-location-dot"></i> San Francisco, CA</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 NovaNode. All rights reserved.</p>
+    <div class="footer-bottom-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+<script>
+let cart = JSON.parse(localStorage.getItem('nn_cart')) || [];
+
+function displayCart() {
+  const container = document.getElementById('cart-items');
+  const summary = document.getElementById('cart-summary');
+  container.innerHTML = '';
+  if (cart.length === 0) {
+    container.innerHTML = `
+      <div class="empty-cart">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <h3>Your cart is empty</h3>
+        <p>Looks like you haven't added anything yet.</p>
+        <a href="products.html"><i class="fa-solid fa-store"></i> Browse Products</a>
+      </div>`;
+    summary.style.display = 'none';
+    return;
+  }
+  let total = 0;
+  cart.forEach((item, i) => {
+    const itemTotal = item.price * item.quantity;
+    total += itemTotal;
+    container.innerHTML += `
+      <div class="cart-item">
+        <img src="${item.image}" alt="${item.name}">
+        <div class="cart-item-info">
+          <h3>${item.name}</h3>
+          <p>$${item.price} each</p>
+        </div>
+        <div class="qty-controls">
+          <button onclick="changeQty(${i}, -1)"><i class="fa-solid fa-minus"></i></button>
+          <span>${item.quantity}</span>
+          <button onclick="changeQty(${i}, 1)"><i class="fa-solid fa-plus"></i></button>
+        </div>
+        <div class="item-total">$${itemTotal}</div>
+        <button class="remove-btn" onclick="removeItem(${i})" title="Remove"><i class="fa-solid fa-trash"></i></button>
+      </div>`;
+  });
+  document.getElementById('subtotal-price').textContent = '$' + total;
+  document.getElementById('total-price').textContent = total;
+  summary.style.display = 'block';
+  localStorage.setItem('nn_cart', JSON.stringify(cart));
+  updateCartCount();
+}
+
+function changeQty(i, delta) {
+  cart[i].quantity += delta;
+  if (cart[i].quantity <= 0) cart.splice(i, 1);
+  displayCart();
+}
+
+function removeItem(i) {
+  cart.splice(i, 1);
+  displayCart();
+}
+
+function clearCart() {
+  if (!confirm('Clear your entire cart?')) return;
+  cart = [];
+  localStorage.removeItem('nn_cart');
+  displayCart();
+}
+
+displayCart();
+</script>
+</body>
+</html>

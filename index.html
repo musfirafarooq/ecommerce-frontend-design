@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NovaNode | Premium Tech Store</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+  </style>
+</head>
+<body>
+
+<!-- =============== HEADER =============== -->
+<header>
+  <div class="top-nav">
+    <a href="index.html" class="logo">
+      <div class="logo-icon"><i class="fa-solid fa-bolt"></i></div>
+      <h2>Nova<span>Node</span></h2>
+    </a>
+
+    <div class="search-box">
+      <input type="text" id="heroSearch" placeholder="Search for laptops, phones, headphones...">
+      <button onclick="handleSearch()"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </div>
+
+    <div class="header-icons">
+      <a href="index.html" class="nav-icon active">
+        <i class="fa-solid fa-house"></i><span>Home</span>
+      </a>
+      <a href="products.html" class="nav-icon">
+        <i class="fa-solid fa-store"></i><span>Shop</span>
+      </a>
+      <a href="#" class="nav-icon">
+        <i class="fa-regular fa-heart"></i><span>Wishlist</span>
+      </a>
+      <a href="cart.html" class="nav-icon" style="position:relative">
+        <i class="fa-solid fa-cart-shopping"></i><span>Cart</span>
+        <b class="cart-badge" id="cart-count" style="display:none">0</b>
+      </a>
+    </div>
+  </div>
+
+  <nav class="main-nav">
+    <ul>
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="products.html">All Products</a></li>
+      <li><a href="products.html?cat=Electronics">Electronics</a></li>
+      <li><a href="products.html?cat=Gaming">Gaming</a></li>
+      <li><a href="products.html?cat=Furniture">Furniture</a></li>
+      <li><a href="products.html?cat=Photography">Photography</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- =============== HERO =============== -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">
+      <i class="fa-solid fa-fire"></i> New Arrivals — Summer 2026
+    </div>
+    <h1>Next-Level Tech<br>at <span>Unbeatable</span><br>Prices</h1>
+    <p>Discover premium electronics, gaming gear, and smart gadgets curated for the modern lifestyle. Free shipping on orders over $50.</p>
+    <div class="hero-buttons">
+      <a href="products.html" class="btn-primary">
+        <i class="fa-solid fa-store"></i> Shop Now
+      </a>
+      <a href="about.html" class="btn-secondary">
+        <i class="fa-solid fa-play"></i> Our Story
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item"><strong>50K+</strong><span>Products</span></div>
+      <div class="stat-item"><strong>200K+</strong><span>Customers</span></div>
+      <div class="stat-item"><strong>4.9★</strong><span>Rating</span></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img-wrap">
+      <img src="https://images.unsplash.com/photo-1498049794561-7780e7231661?w=600&h=500&fit=crop" alt="Tech Products">
+      <div class="hero-badge badge-1">
+        <i class="fa-solid fa-truck-fast"></i>
+        <div><strong>Free Shipping</strong><br><small>On orders $50+</small></div>
+      </div>
+      <div class="hero-badge badge-2">
+        <i class="fa-solid fa-shield-halved"></i>
+        <div><strong>2-Year Warranty</strong><br><small>All products</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============== FEATURES =============== -->
+<section class="features-section">
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon"><i class="fa-solid fa-truck-fast"></i></div>
+      <h3>Free Fast Delivery</h3>
+      <p>Free shipping on all orders over $50. Express 2-day delivery available.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon"><i class="fa-solid fa-rotate-left"></i></div>
+      <h3>Easy Returns</h3>
+      <p>30-day hassle-free returns. No questions asked, full refund guaranteed.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon"><i class="fa-solid fa-lock"></i></div>
+      <h3>Secure Payment</h3>
+      <p>Bank-grade encryption. Pay with card, PayPal, Apple Pay, or crypto.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon"><i class="fa-solid fa-headset"></i></div>
+      <h3>24/7 Support</h3>
+      <p>Real humans available around the clock. Chat, email, or phone support.</p>
+    </div>
+  </div>
+</section>
+
+<!-- =============== CATEGORIES =============== -->
+<section class="categories-section">
+  <div class="section-header">
+    <div class="section-eyebrow">Browse</div>
+    <h2>Shop by <span>Category</span></h2>
+    <p>Find exactly what you're looking for</p>
+  </div>
+  <div class="category-grid">
+    <a href="products.html?cat=Electronics" class="category-card">
+      <i class="fa-solid fa-microchip"></i>
+      <h4>Electronics</h4>
+    </a>
+    <a href="products.html?cat=Gaming" class="category-card">
+      <i class="fa-solid fa-gamepad"></i>
+      <h4>Gaming</h4>
+    </a>
+    <a href="products.html?cat=Photography" class="category-card">
+      <i class="fa-solid fa-camera"></i>
+      <h4>Photography</h4>
+    </a>
+    <a href="products.html?cat=Furniture" class="category-card">
+      <i class="fa-solid fa-chair"></i>
+      <h4>Furniture</h4>
+    </a>
+    <a href="products.html?cat=Audio" class="category-card">
+      <i class="fa-solid fa-headphones"></i>
+      <h4>Audio</h4>
+    </a>
+    <a href="products.html" class="category-card">
+      <i class="fa-solid fa-ellipsis"></i>
+      <h4>All Items</h4>
+    </a>
+  </div>
+</section>
+
+<!-- =============== FEATURED PRODUCTS =============== -->
+<section class="products-section">
+  <div class="products-header">
+    <div class="section-header">
+      <div class="section-eyebrow">Handpicked</div>
+      <h2>Featured <span>Products</span></h2>
+    </div>
+    <a href="products.html" class="view-all">View All <i class="fa-solid fa-arrow-right"></i></a>
+  </div>
+  <div class="product-grid" id="featured"></div>
+</section>
+
+<!-- =============== DEALS BANNER =============== -->
+<section class="deals-section">
+  <div class="deals-left">
+    <h4>⚡ Limited Time Offer</h4>
+    <h2>Up to 40% Off<br>Top Tech Brands</h2>
+    <p>Don't miss out — deals end when the timer hits zero. Grab your favorites before they're gone.</p>
+    <div class="deals-timer">
+      <div class="timer-box"><strong id="t-hours">23</strong><span>Hours</span></div>
+      <div class="timer-box"><strong id="t-mins">47</strong><span>Mins</span></div>
+      <div class="timer-box"><strong id="t-secs">33</strong><span>Secs</span></div>
+    </div>
+    <a href="products.html" class="btn-white">
+      <i class="fa-solid fa-bolt"></i> Grab the Deal
+    </a>
+  </div>
+  <div class="deals-right">
+    <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=500&h=400&fit=crop" alt="Deal Products">
+  </div>
+</section>
+
+<!-- =============== TRENDING PRODUCTS =============== -->
+<section class="products-section">
+  <div class="products-header">
+    <div class="section-header">
+      <div class="section-eyebrow">🔥 Hot Right Now</div>
+      <h2>Trending <span>Products</span></h2>
+    </div>
+    <a href="products.html" class="view-all">View All <i class="fa-solid fa-arrow-right"></i></a>
+  </div>
+  <div class="product-grid" id="trending"></div>
+</section>
+
+<!-- =============== NEWSLETTER =============== -->
+<section class="newsletter-section">
+  <h2>Stay in the Loop</h2>
+  <p>Get exclusive deals, new arrivals, and insider tips delivered to your inbox.</p>
+  <div class="newsletter-box">
+    <input type="email" placeholder="Enter your email address...">
+    <button onclick="subscribeNewsletter()"><i class="fa-solid fa-paper-plane"></i> Subscribe</button>
+  </div>
+</section>
+
+<!-- =============== FOOTER =============== -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-box">
+      <div class="footer-logo">
+        <div class="logo-icon"><i class="fa-solid fa-bolt"></i></div>
+        <h2>Nova<span>Node</span></h2>
+      </div>
+      <p>Your one-stop destination for premium tech products. We bring the world's best gadgets to your doorstep.</p>
+      <div class="social-icons">
+        <a href="#" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" class="social-icon"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="#" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" class="social-icon"><i class="fa-brands fa-youtube"></i></a>
+      </div>
+    </div>
+    <div class="footer-box">
+      <h4>Quick Links</h4>
+      <a href="index.html">Home</a>
+      <a href="products.html">Products</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+      <a href="cart.html">Cart</a>
+    </div>
+    <div class="footer-box">
+      <h4>Categories</h4>
+      <a href="products.html?cat=Electronics">Electronics</a>
+      <a href="products.html?cat=Gaming">Gaming</a>
+      <a href="products.html?cat=Photography">Photography</a>
+      <a href="products.html?cat=Furniture">Furniture</a>
+      <a href="products.html?cat=Audio">Audio</a>
+    </div>
+    <div class="footer-box">
+      <h4>Support</h4>
+      <a href="contact.html">Help Center</a>
+      <a href="#">Track Order</a>
+      <a href="#">Returns</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 NovaNode. All Rights Reserved.</p>
+    <div class="footer-bottom-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Cookies</a>
+    </div>
+  </div>
+</footer>
+
+<!-- =============== SCROLL TOP =============== -->
+<button id="topBtn" title="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
+
+<!-- =============== TOAST =============== -->
+<div class="toast" id="toast"></div>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+<script>
+function handleSearch() {
+  const q = document.getElementById('heroSearch').value.trim();
+  if (q) window.location = `products.html?q=${encodeURIComponent(q)}`;
+  else window.location = 'products.html';
+}
+document.getElementById('heroSearch').addEventListener('keydown', e => {
+  if (e.key === 'Enter') handleSearch();
+});
+function subscribeNewsletter() {
+  showToast('<i class="fa-solid fa-circle-check"></i> You\'re subscribed! Welcome to NovaNode.');
+}
+</script>
+</body>
+</html>

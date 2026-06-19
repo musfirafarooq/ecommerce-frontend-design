@@ -1,0 +1,195 @@
+/* =============================================
+   NOVANODE — Product Detail Page Styles
+============================================= */
+
+.page-banner.small {
+  padding: 20px 60px;
+  background: var(--light, #F5F9F7);
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--muted);
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.breadcrumb a { color: var(--muted); transition: .2s; }
+.breadcrumb a:hover { color: var(--primary); }
+.breadcrumb span#breadcrumbName { color: var(--dark); font-weight: 600; }
+
+/* ===== PRODUCT DETAIL CARD ===== */
+.product-detail {
+  width: 90%;
+  max-width: 1280px;
+  margin: 50px auto;
+}
+
+.detail-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: start;
+  background: white;
+  border: 1px solid #D8E5E0;
+  border-radius: 20px;
+  padding: 44px;
+  box-shadow: var(--shadow-md);
+}
+
+.detail-img-wrap {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--light, #F5F9F7);
+}
+.detail-img-wrap img {
+  width: 100%;
+  height: 100%;
+  max-height: 460px;
+  object-fit: cover;
+  display: block;
+}
+.detail-img-wrap .product-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+}
+
+.detail-card .info h1 {
+  font-size: 30px;
+  font-weight: 800;
+  color: var(--dark);
+  margin-bottom: 14px;
+  line-height: 1.25;
+}
+
+.detail-card .product-rating {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+.detail-card .review-count { font-size: 14px; color: var(--muted); }
+
+.detail-card .price {
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--primary);
+  margin-bottom: 22px;
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+.detail-card .price .old-price {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--muted);
+  text-decoration: line-through;
+}
+
+.detail-description {
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 26px;
+  font-size: 15px;
+}
+
+/* Size selector (shown only for sized categories e.g. apparel) */
+.size-select-wrap {
+  margin-bottom: 26px;
+}
+.size-select-wrap label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--dark);
+  margin-bottom: 8px;
+}
+.size-select-wrap select {
+  width: 100%;
+  max-width: 220px;
+  padding: 12px 14px;
+  border: 2px solid #D8E5E0;
+  border-radius: 10px;
+  font-size: 14px;
+  color: var(--dark);
+  background: var(--light, #F5F9F7);
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  outline: none;
+}
+.size-select-wrap select:focus { border-color: var(--primary); }
+
+.detail-card .btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 36px;
+  font-size: 15px;
+}
+
+/* ===== REVIEWS ===== */
+.reviews-section {
+  width: 90%;
+  max-width: 1280px;
+  margin: 10px auto 60px;
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.review-card {
+  background: white;
+  border: 1px solid #D8E5E0;
+  border-radius: 14px;
+  padding: 22px 24px;
+  box-shadow: var(--shadow-sm);
+}
+
+.review-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.review-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.review-top h4 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 2px;
+}
+
+.review-top .stars { font-size: 12px; }
+
+.review-card p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 850px) {
+  .detail-card { grid-template-columns: 1fr; padding: 28px; gap: 28px; }
+  .reviews-grid { grid-template-columns: 1fr; }
+}
